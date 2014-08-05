@@ -4,5 +4,5 @@ Rails.application.routes.draw do
   post "signin" => "sessions#create"
   get "signout" => "sessions#destroy", as: :signout
   get "/about" => "about#index"
-  get "/new_tasks/index" => "task#index"
+  get "/new" => "task_lists#new"
 end
