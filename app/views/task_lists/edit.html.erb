@@ -1,17 +1,15 @@
-<h1>Add a task list</h1>
+<h1>Edit Task</h1>
 
 <%= form_for @task_list do |t| %>
-
 
 
   <p>
     <%= t.label :title %>
     <%= t.text_field :title %>
     <% if @task_list.errors[:title].any? %>
-      <p class="error"><%= @task_list.errors[:title].first %></p>
-    <% end %>
+    <p class="error"><%= @task_list.errors[:title].first %></p>
+  <% end %>
   </p>
-
 
   <p>
     <%= t.label :name %>
