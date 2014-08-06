@@ -1,6 +1,11 @@
 <h1>My Lists</h1>
 
-<%= link_to "New", new_path %>
+<%= link_to "+ add to task list", new_task_list_path %>
+
+<% flash.each do |name, msg| -%>
+  <%= content_tag :div, msg, class: name %>
+<% end -%>
+
 
 <% @task_lists.each do |task_list| %>
 

@@ -1,1 +1,23 @@
-<h1>new!</h1>
+<h1>Add a task list</h1>
+
+<%= form_for @task_list do |t| %>
+
+  <% if @task_list.errors.any? %>
+    <% @task_list.errors.full_messages.each do |message| %>
+      <div>
+        <%= message %>
+      </div>
+    <% end %>
+  <% end %>
+
+
+  <p>
+    <%= t.label :name %>
+    <%= t.text_field :name %>
+  </p>
+
+  <p>
+    <%= t.submit class: "form-button" %>
+  </p>
+
+<% end %>
