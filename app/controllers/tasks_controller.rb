@@ -8,16 +8,16 @@ class TasksController < ApplicationController
     @tasks = Task.new
   end
 
-  # def create
-  #   @tasks = Task.new(params.require(:task).permit!)
-  #
-  #   if @tasks.save
-  #     redirect_to root_url, flash: {success: "You have successfully added a task"}
-  #   else
-  #     render :new
-  #   end
-  # end
-  #
+  def create
+    @tasks = Task.new(params.require(:task).permit!)
+
+    if @tasks.save
+      redirect_to root_url, flash: {success: "You have successfully added a task"}
+    else
+      render :new
+    end
+  end
+
   # def edit
   #   @tasks = Task.find(params[:id])
   # end

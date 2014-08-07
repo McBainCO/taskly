@@ -1,17 +1,18 @@
 <h1>Add a task list</h1>
 
-<%= form_for @tasks do |t| %>
+<%= form_for @tasks, url: new_task_list_task_path do |t| %>
+
+
+
 
   <p>
     <%= t.label :task %>
     <%= t.text_field :task %>
-    <% if @task.errors[:title].any? %>
-    <p class="error"><%= @task.errors[:title].first %><  /p>
-  <% end %>
-  </p>
 
+  </p>
   <p>
     <%= t.submit class: "form-button" %>
   </p>
 
 <% end %>
+
