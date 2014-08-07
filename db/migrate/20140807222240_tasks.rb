@@ -1,0 +1,7 @@
+class Tasks < ActiveRecord::Migration
+  def change
+    create_table :tasks do |t|
+      t.string :task
+    end
+  end
+end

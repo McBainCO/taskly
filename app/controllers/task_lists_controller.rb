@@ -5,7 +5,7 @@ class TaskListsController < ApplicationController
   end
 
   def new
-    @task_list ||= TaskList.new
+    @task_list = TaskList.new
   end
 
   def create
