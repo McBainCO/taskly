@@ -14,5 +14,9 @@
     <%= t.submit class: "form-button" %>
   </p>
 
+  <p>
+    <%=	 t.date_select("task", order: [:day, :month, :year]) %>
+  </p>
+
 <% end %>
 
