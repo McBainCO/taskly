@@ -1,6 +1,6 @@
 <h1>Add a task list</h1>
 
-<%= form_for @tasks, url: new_task_list_task_path do |t| %>
+<%= form_for [@task_list, @task] do |t| %>
 
 
 
@@ -15,8 +15,7 @@
   </p>
 
   <p>
-    <%=	 t.date_select("task", order: [:day, :month, :year]) %>
+    <%=	select_date %>
   </p>
 
 <% end %>
-

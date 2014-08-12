@@ -5,11 +5,16 @@ class TasksController < ApplicationController
   end
 
   def new
-    @tasks = Task.new
+    @task_list = TaskList.find(params[:task_list_id])
+    @task = Task.new
   end
 
   def create
-    @tasks = Task.new(params.require(:task).permit!)
+    p params
+    @tasks = Task.new(
+      task: params[:task][:task],
+      time: Task.format_date(params[:date])
+    )
 
     if @tasks.save
       redirect_to root_url, flash: {success: "You have successfully added a task"}

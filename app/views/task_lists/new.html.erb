@@ -2,25 +2,15 @@
 
 <%= form_for @task_list do |t| %>
 
-
-
-  <p>
-    <%= t.label :title %>
-    <%= t.text_field :title %>
-    <% if @task_list.errors[:title].any? %>
-      <p class="error"><%= @task_list.errors[:title].first %></p>
-    <% end %>
-  </p>
-
-
   <p>
     <%= t.label :name %>
     <%= t.text_field :name %>
-    <% if @task_list.errors[:title].any? %>
-    <p class="error"><%= @task_list.errors[:title].first %></p>
-  <% end %>
+
   </p>
 
+  <p>
+    <%=	 t.date_select("task", order: [:day, :month, :year]) %>
+  </p>
   <p>
     <%= t.submit class: "form-button" %>
   </p>
