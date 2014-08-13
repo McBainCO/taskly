@@ -13,7 +13,8 @@ class TasksController < ApplicationController
     p params
     @tasks = Task.new(
       task: params[:task][:task],
-      time: Task.format_date(params[:date])
+      time: Task.format_date(params[:date]),
+      task_list_id: params[:task_list_id]
     )
 
     if @tasks.save

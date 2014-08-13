@@ -10,3 +10,6 @@ User.create!(
 
 TaskList.create!(name: "Work List")
 TaskList.create!(name: "Household Chores")
+
+Task.create!(task: "Walk the dog", time: Date.today, task_list_id: 2)
+Task.create!(task: "Read the internets", time: Date.today, task_list_id: 1)
