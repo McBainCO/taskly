@@ -1,8 +1,8 @@
 class Task < ActiveRecord::Base
   belongs_to :task_list
-  validates_presence_of :task
 
-  # validates_presence_of :title
+  validates :task, presence: { message: "Your task could not be created"}
+
 
 
   private
