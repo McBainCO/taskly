@@ -1,6 +1,6 @@
 <h1>Add a task </h1>
 
-<%= form_for [@task_list, @task] do |t| %>
+<%= form_for @task, url: "/task_lists/#{@task_list.id}/tasks", method: :post  do |t| %>
   <p>
     <%= t.label :task %>
     <%= t.text_field :task %>

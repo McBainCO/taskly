@@ -11,33 +11,47 @@ class TasksController < ApplicationController
 
   def create
 
-    @tasks = Task.new(
-      task: params[:task][:task],
-      time: Task.format_date(params[:date]),
-      task_list_id: params[:task_list_id]
-    )
+    @task_list = TaskList.find(params[:task_list_id])
+    @task = Task.new(allowed_parameters)
+    @task.task_list_id = params[:task_list_id]
+    @task.id = params[:task][:id]
 
-    if @tasks.save
-      redirect_to root_url, flash: {success: "You have successfully added a task"}
+    if @task.save
+      flash[:notice] = "Task was created successfully!"
+      redirect_to root_path
     else
-      @task_list = TaskList.find(params[:task_list_id])
-      @tasks = Task.new
       render :new
     end
   end
 
-  # def edit
-  #   @tasks = Task.find(params[:id])
-  # end
-  #
-  # def update
-  #   @tasks = Task.new(params.require(:task).permit!)
-  #
-  #   if @tasks.save
-  #     redirect_to root_url, flash: {success: "You have successfully updated a task"}
-  #   else
-  #     render :index
-  #   end
-  # end
+  def edit
+    @task = Task.find(params[:id])
+  end
+
+  def update
+    @task = Task.find(params[:id])
+    @task.update_attributes(complete: true)
+    flash[:notice] = "Task was completed"
+    redirect_to :back
+  end
+
+  def destroy
+    @task = Task.find(params[:id])
+    @task.destroy
+    flash[:notice] = "Task was deleted successfully!"
+    redirect_to root_path
+  end
+
+  def show
+    @task_list = TaskList.find(params[:task_list_id])
+    @users = User.all
+  end
+
+  private
+
+  def allowed_parameters
+    params.require(:task).permit(:name, :date)
+  end
+
 
 end
